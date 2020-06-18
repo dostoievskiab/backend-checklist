@@ -1,8 +1,12 @@
 # Simple Backend
-Application using:
+Building a simple RESTful API using:
 - Express
 - Sequelize
 - PostgreSQL
+
+### What am i trying to learn?
+- Version Control of Database (Migrations...)
+- TDD with JEST 
 
 ### Creating development database
 I will be using Docker to run the postgreSQL 
