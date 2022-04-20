@@ -1,4 +1,4 @@
-# Checklist Backend API
+# 📝 Checklist Backend API 
 ## Introduction
 An API created using NodeJS that lets you create and manager checklist for your internal process.
 
