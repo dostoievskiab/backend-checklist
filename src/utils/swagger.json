@@ -1,0 +1,138 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "An API created using NodeJS that lets you create and manager checklist for your internal process.",
+        "version": "beta",
+        "title": "Checklist API",
+        "termsOfService": null
+    },
+    "host": "localhost",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "users"
+        },
+        {
+            "name": "checklist"
+        },
+        {
+            "name": "tasks"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get all users registered in the system",
+                "description": "Return an array of objects with id, name and email of each user",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Let you register an user",
+                "description": "Accept an object with name, unique email and password to be registred",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Properties needed to create user",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Edit one user registered in the system",
+                "description": "Accept an object with name, email and password to change user based on id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Properties needed to create user",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Delete one user registered in the system",
+                "description": "Delete user permanently from the system",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "UserInput": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

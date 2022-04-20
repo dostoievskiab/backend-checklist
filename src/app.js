@@ -1,26 +1,20 @@
-const express= require('express');
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./utils/swagger.json');
+require('dotenv').config();
 
-/**
- * @name AppController
- * @description A intenção com essa classe é que fique tudo no mesmo block e eu possa utilizar as rotas ou middle de
- * uma forma organizada.
- */
-class AppController {
-    constructor(){
-        this.express = express();
+app.use(express.json());
+app.use(cors({ origin: ['*'] }));
+// Based on env we need to change hostname for Swagger
+if (process.env.NODE_ENV != 'production') { swaggerDocument.host = 'localhost:' + process.env.PORT }
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(require('./routes'));
+// TODO: Need a better error handling 
+app.use(function (err, req, res, next) {
+    console.log(err)
+    next()
+})
 
-        // Executando os metodos
-        this.middlewares()
-        this.routes()
-    }
-
-    middlewares() {
-        this.express.use(express.json()); // Permite que o express interprete json
-    }
-
-    routes() {
-        this.express.use(require('./routes')); // Arquivo onde se encontra todas as rotas
-    }
-}
-
-module.exports = new AppController().express;
+module.exports = app;
