@@ -1,15 +1,16 @@
 # 📝 Checklist Backend API 
 ## Introduction
-An API created using NodeJS that lets you create and manager checklist for your internal process.
+An Restful API using NodeJS that lets you create and manage checklist for your internal process.
 
 ### What i'm trying to learn with this project
-- How to better structure folders for more clean project
-- Using write tests when developing
+- How to better structure folders for clean project
+- How to write tests when developing
 
-### Features in this application
-- Able to create multiple checklist.
-- Able to authenticate, register and edit users.
-- Able to create multiple kinds of tasks for checklist, for example: closed questions and open questions.
+### Planned Features
+- [X] Able to create, view, modify and delete user.
+- [ ] Able to create multiple checklist.
+- [ ] Able to authenticate users.
+- [ ] Able to create multiple kinds of tasks for checklist, for example: closed questions and open questions.
 
 ## Database schema
 ![databasescheme](docs/database_schema.png)
